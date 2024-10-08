@@ -1,0 +1,6 @@
+if NONAME38
+
+config ZMK_KEYBOARD_NAME
+    default "noname38"
+    
+endif

@@ -1,0 +1,2 @@
+config NONAME38
+    def_bool $(shields_list_contains,noname38)

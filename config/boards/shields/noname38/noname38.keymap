@@ -1,0 +1,53 @@
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/outputs.h>
+#include <physical_layouts.dtsi>
+
+
+
+#define DEF 0
+#define LWR 1
+#define RSE 2
+#define ADJ 3
+
+&lt { quick-tap-ms = <200>; };
+&mt { quick-tap-ms = <200>; };
+
+
+
+
+/ {
+        keymap {
+                compatible = "zmk,keymap";
+
+                default_layer {
+// -----------------------------------------------------------------------------------------
+//        |   ~  |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  |  F11   | 
+//        | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |CTRL/'|
+//        | LALT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | RALT |
+//                           | RSE | SPC | LWR |   | LWR | BKSP | RSE |
+                        bindings = <
+            &kp Q &kp W &kp E &kp R &kp T &kp Y  &kp U  &kp I     &kp O   &kp P    &kp RET 
+            &kp A &kp S &kp D &kp F &kp G &kp H &kp J  &kp K     &kp L   &kp SEMI
+            &kp Z &kp X &kp C &kp V &kp B &kp N   &kp M  &kp COMMA &kp DOT &kp FSLH
+            &kp TAB &kp SPACE &kp RET &kp ESC &kp BSPC &kp DEL &kp DEL
+                        >;
+                };
+        };
+};
+
+/ {
+    default_layout: default_layer {
+        compatible = "zmk,physical-layout";
+        display-name = "Default Layout";
+        transform = <&default_transform>;
+        kscan = <&kscan0>;
+    };
+};
